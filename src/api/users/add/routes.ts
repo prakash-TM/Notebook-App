@@ -8,8 +8,8 @@ const router:Router=Express.Router()
 router.post("/user",addNewUser)
 router.get("/get",getUser)
 router.get("/getSingleUser",getSingleUser)
-router.get("/removeSingleUser",removeSingleUser)
-router.get("/removeUser",removeUser)
+router.delete("/removeSingleUser",removeSingleUser)
+router.delete("/removeUser",removeUser)
 
 
 export default router

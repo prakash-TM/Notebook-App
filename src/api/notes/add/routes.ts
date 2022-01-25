@@ -7,7 +7,7 @@ const router:Router=Express.Router()
 router.post("/notes",addNewNotes)
 router.get("/get",getNotes)
 router.get("/getSingleNotes",getSingleNotes)
-router.get("/removeSingleNotes",removeSingleNotes)
-router.get("/removeNotes",removeNotes)
+router.delete("/removeSingleNotes",removeSingleNotes)
+router.delete("/removeNotes",removeNotes)
 
 export default router
