@@ -98,4 +98,24 @@ const removeUser=async(req:Request,res:Response)=>{
     res.send({message:"records deleted successfully"})
 }
 
-export{addNewUser,getUser,getSingleUser,removeSingleUser,removeUser}
+
+const updateSingleUser=async(req:Request,res:Response)=>{
+    const myQuery={name:"prakash"}
+    const response=await userModel.updateOne(myQuery,{name:"Tony stark"})
+    if(!response){
+        res.send({message:"not able to update"})
+    }
+    res.send({response})
+}
+
+
+
+const updateAllUser=async(req:Request,res:Response)=>{
+    const response=await userModel.updateMany({},{name:"Rock"})
+    if(!response){
+        res.send({message:"not able to update"})
+    }
+    res.send({response})
+}
+
+export{addNewUser,getUser,getSingleUser,removeSingleUser,removeUser,updateSingleUser,updateAllUser}

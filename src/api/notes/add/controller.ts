@@ -83,4 +83,23 @@ const removeNotes=async(req:Request,res:Response)=>{
     res.send({message:"records deleted successfully"})
 }
 
-export{addNewNotes,getNotes,getSingleNotes,removeSingleNotes,removeNotes}
+const updateSingleNotes=async(req:Request,res:Response)=>{
+    const myQuery={title:"iron man"}
+    const response=await notesModel.updateOne(myQuery,{title:"spider man"})
+    if(!response){
+        res.send({message:"not able to update"})
+    }
+    res.send({response})
+}
+
+
+
+const updateAllNotes=async(req:Request,res:Response)=>{
+    const response=await notesModel.updateMany({},{title:"iron man"})
+    if(!response){
+        res.send({message:"not able to update"})
+    }
+    res.send({response})
+}
+
+export{addNewNotes,getNotes,getSingleNotes,removeSingleNotes,removeNotes,updateSingleNotes,updateAllNotes}

@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { notesModel } from "../../notes/add/model";
 import { noteBookModel } from "./model";
 /**
  * Add / Create a new Notebbok
@@ -35,6 +36,7 @@ const addNewNotebook = async(req: Request, res: Response) => {
     res.send({ message: "Notebook created successfully" });
 };
 
+//find all
 const getNotebook=async(req:Request,res:Response)=>{
     const response=await noteBookModel.find()
     if(!response){
@@ -43,6 +45,7 @@ const getNotebook=async(req:Request,res:Response)=>{
     res.send({response})
 }
 
+// find single 
 const getSingleNotebook=async(req:Request,res:Response)=>{
     const response=await noteBookModel.find({title:"iron man"})
     if(!response){
@@ -50,6 +53,8 @@ const getSingleNotebook=async(req:Request,res:Response)=>{
     }
     res.send({response})
 }
+
+//remove single
 
 const removeSingleNotebook=async(req:Request,res:Response)=>{
     const response=await noteBookModel.remove({title:"iron man"})
@@ -59,6 +64,7 @@ const removeSingleNotebook=async(req:Request,res:Response)=>{
     res.send({message:"records deleted successfully"})
 }
 
+//remove all
 const removeNotebook=async(req:Request,res:Response)=>{
     const response=await noteBookModel.remove()
     if(!response){
@@ -67,4 +73,25 @@ const removeNotebook=async(req:Request,res:Response)=>{
     res.send({message:"records deleted successfully"})
 }
 
-export{addNewNotebook,getNotebook,getSingleNotebook,removeSingleNotebook,removeNotebook}
+// update single
+
+const updateSingleNotebook=async(req:Request,res:Response)=>{
+    const myQuery={title:"iron man"}
+    const response=await noteBookModel.updateOne(myQuery,{title:"spider man"})
+    if(!response){
+        res.send({message:"not able to update"})
+    }
+    res.send({response})
+}
+
+// update all 
+
+const updateAllNotebook=async(req:Request,res:Response)=>{
+    const response=await noteBookModel.updateMany({},{title:"iron man"})
+    if(!response){
+        res.send({message:"not able to update"})
+    }
+    res.send({response})
+}
+
+export{addNewNotebook,getNotebook,getSingleNotebook,removeSingleNotebook,removeNotebook,updateSingleNotebook,updateAllNotebook}

@@ -3,7 +3,6 @@
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
-
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "nodemon index.ts"
@@ -12,6 +11,7 @@
     "license": "ISC",
     "dependencies": {
         "@babel/plugin-transform-modules-commonjs": "^7.16.8",
+        "@types/react-native": "^0.63.40",
         "axios": "^0.24.0",
         "core-util-is": "^1.0.3",
         "express": "^4.17.2",
