@@ -38,11 +38,11 @@ const addNewNotebook = async(req: Request, res: Response) => {
 
 //find all
 const getNotebook=async(req:Request,res:Response)=>{
-    const response=await noteBookModel.find()
+    const response=await noteBookModel.find({},{userId:0,_id:0,createdAt:0,updatedAt:0,__v:0})
     if(!response){
         res.send({message:"can't find user"})
     }
-    res.send({response})
+    res.send(response)
 }
 
 // find single 
@@ -76,8 +76,8 @@ const removeNotebook=async(req:Request,res:Response)=>{
 // update single
 
 const updateSingleNotebook=async(req:Request,res:Response)=>{
-    const myQuery={title:"iron man"}
-    const response=await noteBookModel.updateOne(myQuery,{title:"spider man"})
+    const myQuery={title:"fixtion"}
+    const response=await noteBookModel.updateOne(myQuery,{title:"thriller"})
     if(!response){
         res.send({message:"not able to update"})
     }
@@ -87,7 +87,7 @@ const updateSingleNotebook=async(req:Request,res:Response)=>{
 // update all 
 
 const updateAllNotebook=async(req:Request,res:Response)=>{
-    const response=await noteBookModel.updateMany({},{title:"iron man"})
+    const response=await noteBookModel.updateMany({},{title:"fixtion"})
     if(!response){
         res.send({message:"not able to update"})
     }

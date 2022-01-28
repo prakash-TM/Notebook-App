@@ -52,11 +52,11 @@ res.send({message :"Notes created successfully"})
 
 
 const getNotes=async(req:Request,res:Response)=>{
-    const response=await notesModel.find()
+    const response=await notesModel.find({},{__v:0,createdAt:0,updatedAt:0,})
     if(!response){
         res.send({message:"can't find user"})
     }
-    res.send({response})
+    res.send(response)
 }
 
 const getSingleNotes=async(req:Request,res:Response)=>{

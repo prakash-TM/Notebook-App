@@ -67,11 +67,11 @@ res.send({message:"User created successfully"})
 
 
 const getUser=async(req:Request,res:Response)=>{
-    const response=await userModel.find()
+    const response=await userModel.find({},{_id:0,createdAt:0,updatedAt:0,__v:0})
     if(!response){
         res.send({message:"can't find user"})
     }
-    res.send({response})
+    res.send(response)
 }
 
 const getSingleUser=async(req:Request,res:Response)=>{
